@@ -38,8 +38,18 @@ class ButterflySpider(scrapy.Spider):
         _b = '<p class="p1">'
         _e = '</p>'
 
-        headings = []
+        catalog = {}
+        # This depends on taking all of the things between class="p1" and associatings
+        # those things.
+
+        current_heading = ""
         for ps in p:
             if '<p class="p1">' in ps:
-                headings += [ps.replace(_b,'').replace(_e,'')]
-        yield {"headings": headings}
+                current_heading = ps.replace(_b,'').replace(_e,'')
+            else:
+                if current_heading not in catalog:
+                    catalog[current_heading] = [ps]
+                else:
+                    catalog[current_heading] += [ps]
+
+        yield catalog
