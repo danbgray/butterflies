@@ -15,7 +15,7 @@ make sure you have python > 3.0 installed.
 
 # Usage
 
-1. Run `scrapy crawl ButterflyGlossary` to collect the full taxonomy presented on the US-Can-Cat.htm page
+1. Run `scrapy crawl ButterflyGlossary -o butterflyglossary.json` to collect the full taxonomy presented on the US-Can-Cat.htm page
 
 # Roadmap
 
